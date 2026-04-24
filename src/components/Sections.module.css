@@ -15,7 +15,7 @@
 .splitLayout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
 }
 @media (min-width: 1024px) {
@@ -87,11 +87,12 @@
 .bentoGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 @media (min-width: 768px) {
   .bentoGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }
 @media (min-width: 1024px) {
@@ -104,7 +105,7 @@
   grid-column: 1 / -1;
   background: var(--color-bg);
   border-radius: 24px;
-  padding: 4rem;
+  padding: 2.5rem;
   border: 1px solid rgba(109, 40, 217, 0.05);
   display: flex;
   flex-direction: column;
@@ -112,6 +113,11 @@
   gap: 1.5rem;
   box-shadow: 0 10px 40px -10px rgba(109, 40, 217, 0.02);
   transition: all 0.4s ease;
+}
+@media (min-width: 768px) {
+  .bentoFeatured {
+    padding: 4rem;
+  }
 }
 @media (min-width: 1024px) {
   .bentoFeatured {
@@ -127,13 +133,18 @@
 .bentoSmall {
   background: #FFFFFF;
   border-radius: 24px;
-  padding: 3rem;
+  padding: 2rem;
   border: 1px solid rgba(109, 40, 217, 0.08);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   box-shadow: 0 10px 40px -10px rgba(109, 40, 217, 0.04);
   transition: all 0.4s ease;
+}
+@media (min-width: 768px) {
+  .bentoSmall {
+    padding: 3rem;
+  }
 }
 .bentoSmall:hover {
   transform: translateY(-4px);
@@ -247,29 +258,43 @@
 .heroGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
+  text-align: center;
 }
-
 @media (min-width: 1024px) {
   .heroGrid {
     grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    text-align: left;
   }
 }
 
 .heroTitle {
-  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-size: clamp(2.5rem, 8vw, 6rem); /* Balanced for desktop/mobile */
   color: var(--color-text-main);
   margin-bottom: 2rem;
   line-height: 1.1;
   letter-spacing: -0.03em;
 }
+@media (max-width: 768px) {
+  .heroTitle br {
+    display: none;
+  }
+}
 
 .heroDesc {
   font-size: 1.125rem;
   color: var(--color-text-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   max-width: 500px;
+}
+@media (max-width: 768px) {
+  .heroDesc {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 }
 
 .heroBtns {
@@ -277,15 +302,36 @@
   gap: 1.25rem;
   flex-wrap: wrap;
 }
+@media (max-width: 768px) {
+  .heroBtns {
+    justify-content: center;
+    gap: 1rem;
+  }
+  .heroBtns > * {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .heroImageWrap {
   position: relative;
   border-radius: 2rem;
   overflow: hidden;
   box-shadow: 0 30px 60px -20px rgba(109, 40, 217, 0.1);
+  width: 100%;
+  background-color: #fcfaff;
+  /* Desktop: fill grid column with natural 4/3 ratio, no max-width constraint */
   aspect-ratio: 4 / 3;
-  min-height: 500px;
-  background-color: #fcfaff; /* Light background behind the image */
+  min-height: 420px;
+}
+/* Mobile-only: constrain width and reduce height */
+@media (max-width: 1023px) {
+  .heroImageWrap {
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 280px;
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .imageOverlayLight {
@@ -654,17 +700,17 @@
   margin: 0 auto;
 }
 .missionTitle {
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 8vw, 4rem);
   font-weight: 600;
   color: #FFFFFF;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .missionHighlight { color: #E0B0FF; }
 .missionText {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.85);
   font-weight: 300;
   max-width: 42rem;
   margin: 0 auto;
@@ -709,19 +755,19 @@
   z-index: 10;
 }
 .ctaTitle {
-  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-size: clamp(2.25rem, 7vw, 3.5rem);
   font-weight: 600;
   color: #1E1B2E;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
 }
 .ctaText {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
   color: #64748B;
   max-width: 42rem;
   margin: 0 auto 2.5rem;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 /* ===== HOW WE WORK (The Methodology) ===== */
@@ -772,29 +818,33 @@
   }
 }
 .stepNumber {
-  font-size: clamp(4rem, 8vw, 6rem);
+  font-size: clamp(3.5rem, 10vw, 5rem);
   font-weight: 300;
   color: #E2D8F0;
   letter-spacing: -0.04em;
   line-height: 1;
   flex-shrink: 0;
-  width: 8rem;
+}
+@media (min-width: 768px) {
+  .stepNumber {
+    width: 8rem;
+  }
 }
 .stepContent {
   flex: 1;
 }
 .stepTitle {
-  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
-  font-weight: 500;
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 600;
   color: #1E1B2E;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
 .stepDesc {
   color: #64748B;
-  font-size: 1.0625rem;
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
   max-width: 40rem;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 /* ===== ADVANTAGE (The Impact) ===== */

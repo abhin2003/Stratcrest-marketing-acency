@@ -78,6 +78,16 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <li style={{ marginTop: '1rem' }}>
+              <Link 
+                href="#contact" 
+                className={styles.ctaLink} 
+                style={{ display: 'inline-block', width: '100%' }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Get Started
+              </Link>
+            </li>
           </ul>
         </div>
       )}
