@@ -40,12 +40,15 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.2 }}
             className={s.heroImageWrap}
           >
+            <div className={s.imageOverlayLight}></div>
             <Image
-              src="/assets/hero_abstract_light_luxury.png"
+              src="/assets/hero_lux_v2.png"
               alt="Abstract Soft Luxury Art"
               fill
               className="object-cover"
               priority
+              quality={100}
+              style={{ filter: 'brightness(1.15) contrast(0.9) saturate(0.85)' }}
             />
           </motion.div>
         </div>

@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, Phone, Send, MessageCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, Send, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
 import s from "./Sections.module.css";
+import { useState } from "react";
 
 const InstagramIcon = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -28,6 +29,59 @@ const categories = [
 ];
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      setStatus("success");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again later.");
+    }
+  };
+
   return (
     <section id="contact" className={s.contactSection}>
       <div className={s.contactInner}>
@@ -94,59 +148,133 @@ const Contact = () => {
           <h3 className={s.formCardTitle}>Book a Free Strategy Call</h3>
           <p className={s.formCardSub}>You can reach us anytime</p>
 
-          <form className={s.formBody}>
-            <div className={s.formRow2}>
-              <div className={s.formField}>
-                <input
-                  type="text"
-                  placeholder="First name"
-                  className={s.formInput2}
-                />
-              </div>
-              <div className={s.formField}>
-                <input
-                  type="text"
-                  placeholder="Last name"
-                  className={s.formInput2}
-                />
-              </div>
-            </div>
+          <AnimatePresence mode="wait">
+            {status === "success" ? (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className={s.successContainer}
+                style={{
+                  textAlign: "center",
+                  padding: "40px 20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "16px"
+                }}
+              >
+                <CheckCircle2 size={48} color="#7c3aed" />
+                <div>
+                  <h4 style={{ fontSize: "1.25rem", fontWeight: 600, color: "#111", marginBottom: "8px" }}>Message Sent!</h4>
+                  <p style={{ color: "#666", fontSize: "0.95rem" }}>
+                    We&apos;ve received your request and will get back to you within 24 hours.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className={s.formSubmitBtn2}
+                  style={{ marginTop: "12px", padding: "10px 24px", width: "auto" }}
+                >
+                  Send Another Message
+                </button>
+              </motion.div>
+            ) : (
+              <motion.form
+                key="form"
+                onSubmit={handleSubmit}
+                className={s.formBody}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <div className={s.formRow2}>
+                  <div className={s.formField}>
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="First name"
+                      required
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      className={s.formInput2}
+                    />
+                  </div>
+                  <div className={s.formField}>
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Last name"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      className={s.formInput2}
+                    />
+                  </div>
+                </div>
 
-            <div className={s.formField}>
-              <input
-                type="email"
-                placeholder="Your email"
-                className={s.formInput2}
-              />
-            </div>
+                <div className={s.formField}>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={s.formInput2}
+                  />
+                </div>
 
-            <div className={s.formField}>
-              <input
-                type="text"
-                placeholder="How can we help?"
-                className={s.formInput2}
-              />
-            </div>
+                <div className={s.formField}>
+                  <input
+                    type="text"
+                    name="subject"
+                    placeholder="How can we help?"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className={s.formInput2}
+                  />
+                </div>
 
-            <div className={s.formField}>
-              <textarea
-                rows={4}
-                placeholder="Tell us about your goals..."
-                className={`${s.formInput2} ${s.formTextarea2}`}
-              />
-            </div>
+                <div className={s.formField}>
+                  <textarea
+                    rows={4}
+                    name="message"
+                    placeholder="Tell us about your goals..."
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    className={`${s.formInput2} ${s.formTextarea2}`}
+                  />
+                </div>
 
-            <button type="submit" className={s.formSubmitBtn2}>
-              Send Message <Send size={16} />
-            </button>
+                {status === "error" && (
+                  <p style={{ color: "#ef4444", fontSize: "0.85rem", marginBottom: "12px" }}>
+                    {errorMessage}
+                  </p>
+                )}
 
-            <p className={s.formDisclaimer}>
-              By contacting us, you agree to our{" "}
-              <a href="#" className={s.formDisclaimerLink}>Terms of Service</a>{" "}
-              and{" "}
-              <a href="#" className={s.formDisclaimerLink}>Privacy Policy</a>.
-            </p>
-          </form>
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className={s.formSubmitBtn2}
+                >
+                  {status === "loading" ? (
+                    <>Sending... <Loader2 size={16} className={s.spinner} /></>
+                  ) : (
+                    <>Send Message <Send size={16} /></>
+                  )}
+                </button>
+
+                <p className={s.formDisclaimer}>
+                  By contacting us, you agree to our{" "}
+                  <a href="#" className={s.formDisclaimerLink}>Terms of Service</a>{" "}
+                  and{" "}
+                  <a href="#" className={s.formDisclaimerLink}>Privacy Policy</a>.
+                </p>
+              </motion.form>
+            )}
+          </AnimatePresence>
         </motion.div>
 
       </div>
@@ -155,3 +283,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

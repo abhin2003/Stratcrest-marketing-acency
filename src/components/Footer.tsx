@@ -20,11 +20,11 @@ const Footer = () => {
         <div className={s.footerGrid}>
           <div>
             <div className={s.footerLogo}>
-              <Image 
-                src="/assets/stratcrest_theme.png" 
-                alt="Logo" 
-                width={160} 
-                height={42} 
+              <Image
+                src="/assets/stratcrest_theme.png"
+                alt="Logo"
+                width={160}
+                height={42}
                 style={{ width: "auto", height: "42px", objectFit: "contain" }}
               />
             </div>
@@ -68,7 +68,7 @@ const Footer = () => {
 
         <div className={s.footerBottom}>
           <p className={s.copyright}>
-            © 2024 Stratcrest Marketing & Consulting. All rights reserved.
+            © 2026 Stratcrest Marketing & Consulting. All rights reserved.
           </p>
           <div className={s.footerLinksRow}>
             <Link href="#" className={s.footerLink}>Privacy Policy</Link>

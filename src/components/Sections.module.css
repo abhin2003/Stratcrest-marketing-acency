@@ -282,9 +282,19 @@
   position: relative;
   border-radius: 2rem;
   overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgba(109, 40, 217, 0.15);
+  box-shadow: 0 30px 60px -20px rgba(109, 40, 217, 0.1);
   aspect-ratio: 4 / 3;
   min-height: 500px;
+  background-color: #fcfaff; /* Light background behind the image */
+}
+
+.imageOverlayLight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 100%);
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
 }
 
 /* Process Container */
@@ -825,50 +835,76 @@
 }
 .advantageGrid {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
+  flex-direction: row;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 1rem 1.5rem 2rem;
+  margin: 0 -1.5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+
+.advantageGrid::-webkit-scrollbar {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .advantageGrid {
     flex-direction: row;
+    justify-content: center;
     gap: 2rem;
+    overflow-x: visible;
+    margin: 0;
+    padding: 0;
+    scroll-snap-type: none;
   }
 }
+
 .metricCard {
-  flex: 1;
+  flex: 0 0 280px;
+  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 3rem;
+  padding: 3rem 2rem;
   border-radius: 2rem;
   background: rgba(245, 243, 255, 0.8);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(109, 40, 217, 0.1);
   box-shadow: 0 10px 40px -10px rgba(109, 40, 217, 0.08);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
 }
+
+@media (min-width: 768px) {
+  .metricCard {
+    flex: 1;
+  }
+}
+
 .metricCard:hover {
   box-shadow: 0 20px 50px -10px rgba(109, 40, 217, 0.15);
   transform: translateY(-4px);
 }
 .metricCardValue {
-  font-size: clamp(3.5rem, 7vw, 5rem);
+  font-size: clamp(2.25rem, 8vw, 4rem);
   font-weight: 700;
   background: linear-gradient(135deg, #6D28D9, #A56FC9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 1rem;
-  line-height: 1;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+  word-break: break-word;
 }
 .metricCardLabel {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-weight: 500;
+  letter-spacing: 0.15em;
+  font-weight: 600;
   color: #64748B;
+  opacity: 0.8;
 }
 
 /* About Section Image */
@@ -961,4 +997,22 @@
   font-size: 0.9375rem;
   color: var(--color-text-muted);
   line-height: 1.6;
+}
+
+/* Spinner Animation */
+.spinner {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successContainer {
+  /* Additional styles if needed beyond inline */
 }
