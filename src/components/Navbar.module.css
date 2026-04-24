@@ -1,0 +1,137 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 1rem 0;
+  background: rgba(245, 243, 255, 0.85); /* F5F3FF with opacity */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(109, 40, 217, 0.05);
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logoText {
+  color: var(--color-text-main);
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.desktopMenu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navLink {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--color-accent);
+}
+
+.navLinkActive {
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.ctaLink {
+  background: linear-gradient(135deg, var(--color-lavender), var(--color-accent));
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px -5px rgba(109, 40, 217, 0.2);
+}
+
+.ctaLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -5px rgba(109, 40, 217, 0.3);
+}
+
+.mobileToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text-main);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mobileToggle:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .desktopMenu {
+    display: none;
+  }
+  .mobileToggle {
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #F5F3FF;
+  border-bottom: 1px solid rgba(109, 40, 217, 0.1);
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.mobileMenuList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileMenuLink {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1E1B2E;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobileMenuLink:hover {
+  color: #6D28D9;
+}
