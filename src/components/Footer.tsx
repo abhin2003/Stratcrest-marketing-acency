@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import s from "./Sections.module.css";
 
 const InstagramIcon = ({ size = 18 }: { size?: number }) => (

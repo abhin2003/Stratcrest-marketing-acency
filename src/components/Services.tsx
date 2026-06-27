@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PenTool, Target, Zap, LayoutDashboard, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import { PenTool, Target, Zap, LayoutDashboard, ArrowUpRight, Box } from "lucide-react";
+
 import s from "./Sections.module.css";
 
 const Services = () => {
@@ -111,6 +111,20 @@ const Services = () => {
             </div>
             <h3 className="text-xl font-semibold text-[#1E1B2E]">Customer Service Training</h3>
             <p className="text-[#64748B]">Elevating your client experience to build loyalty.</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            viewport={{ once: true }}
+            className={s.bentoSmall}
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#F5F3FF] flex items-center justify-center text-[#6D28D9]">
+              <Box size={24} />
+            </div>
+            <h3 className="text-xl font-semibold text-[#1E1B2E]">Product Development</h3>
+            <p className="text-[#64748B]">Building innovative and scalable solutions for your market needs.</p>
           </motion.div>
         </div>
       </div>
