@@ -25,10 +25,10 @@ const Hero = () => {
               Stratcrest is a results-driven marketing and consulting agency helping businesses grow through branding, digital presence, and performance marketing.
             </p>
             <div className={s.heroBtns}>
-              <Link href="/#services" className="btn-purple">
+              <Link href="/services" className="btn-purple">
                 Explore Our Services
               </Link>
-              <Link href="/#contact" className="btn-dark" style={{ background: '#FFFFFF', color: '#1E1B2E', border: '1px solid #E2D8F0' }}>
+              <Link href="/contact" className="btn-dark" style={{ background: '#FFFFFF', color: '#1E1B2E', border: '1px solid #E2D8F0' }}>
                 Contact Us
               </Link>
             </div>

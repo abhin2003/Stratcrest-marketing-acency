@@ -26,7 +26,7 @@ const CTA = () => {
               Ready to transcend the ordinary? Join the ranks of industry leaders who have trusted Stratcrest to define their future.
             </p>
             <Link 
-              href="/#contact" 
+              href="/contact" 
               className="btn-purple"
             >
               Start the Conversation

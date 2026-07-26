@@ -36,20 +36,20 @@ const Footer = () => {
           <div>
             <h3 className={s.footerColTitle}>Navigation</h3>
             <ul className={s.footerLinks}>
-              <li><Link href="/#home" className={s.footerLink}>Home</Link></li>
-              <li><Link href="/#services" className={s.footerLink}>Services</Link></li>
-              <li><Link href="/#about" className={s.footerLink}>About</Link></li>
-              <li><Link href="/#contact" className={s.footerLink}>Contact</Link></li>
+              <li><Link href="/home" className={s.footerLink}>Home</Link></li>
+              <li><Link href="/services" className={s.footerLink}>Services</Link></li>
+              <li><Link href="/about" className={s.footerLink}>About</Link></li>
+              <li><Link href="/contact" className={s.footerLink}>Contact</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className={s.footerColTitle}>Services</h3>
             <ul className={s.footerLinks}>
-              <li><Link href="/#services" className={s.footerLink}>Website Creation</Link></li>
-              <li><Link href="/#services" className={s.footerLink}>Ads Management</Link></li>
-              <li><Link href="/#services" className={s.footerLink}>Social Media</Link></li>
-              <li><Link href="/#services" className={s.footerLink}>Sales Training</Link></li>
+              <li><Link href="/services" className={s.footerLink}>Website Creation</Link></li>
+              <li><Link href="/services" className={s.footerLink}>Ads Management</Link></li>
+              <li><Link href="/services" className={s.footerLink}>Social Media</Link></li>
+              <li><Link href="/services" className={s.footerLink}>Sales Training</Link></li>
             </ul>
           </div>
 

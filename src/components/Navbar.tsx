@@ -19,11 +19,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/#home" },
-    { name: "Services", href: "/#services" },
-    { name: "How We Work", href: "/#how-we-work" },
-    { name: "Why Us", href: "/#why-us" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Home", href: "/home" },
+    { name: "Services", href: "/services" },
+    { name: "How We Work", href: "/how-we-work" },
+    { name: "Why Us", href: "/why-us" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -50,7 +50,7 @@ const Navbar = () => {
         </ul>
 
         <div className={styles.actions}>
-          <Link href="/#contact" className={styles.ctaLink}>
+          <Link href="/contact" className={styles.ctaLink}>
             Get Started
           </Link>
           <button
@@ -79,7 +79,7 @@ const Navbar = () => {
             ))}
             <li style={{ marginTop: '1rem' }}>
               <Link 
-                href="/#contact" 
+                href="/contact" 
                 className={styles.ctaLink} 
                 style={{ display: 'inline-block', width: '100%' }}
                 onClick={() => setIsMobileMenuOpen(false)}
