@@ -21,8 +21,8 @@ const Footer = () => {
           <div>
             <div className={s.footerLogo}>
               <Image
-                src="/assets/stratcrest_theme.png"
-                alt="Logo"
+                src="/assets/stratcrest_theme.webp"
+                alt="Stratcrest Marketing Agency Official Logo"
                 width={160}
                 height={42}
                 style={{ width: "auto", height: "42px", objectFit: "contain" }}
@@ -34,27 +34,27 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className={s.footerColTitle}>Navigation</h4>
+            <h3 className={s.footerColTitle}>Navigation</h3>
             <ul className={s.footerLinks}>
-              <li><Link href="#home" className={s.footerLink}>Home</Link></li>
-              <li><Link href="#services" className={s.footerLink}>Services</Link></li>
-              <li><Link href="#about" className={s.footerLink}>About</Link></li>
-              <li><Link href="#contact" className={s.footerLink}>Contact</Link></li>
+              <li><Link href="/#home" className={s.footerLink}>Home</Link></li>
+              <li><Link href="/#services" className={s.footerLink}>Services</Link></li>
+              <li><Link href="/#about" className={s.footerLink}>About</Link></li>
+              <li><Link href="/#contact" className={s.footerLink}>Contact</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className={s.footerColTitle}>Services</h4>
+            <h3 className={s.footerColTitle}>Services</h3>
             <ul className={s.footerLinks}>
-              <li><Link href="#services" className={s.footerLink}>Website Creation</Link></li>
-              <li><Link href="#services" className={s.footerLink}>Ads Management</Link></li>
-              <li><Link href="#services" className={s.footerLink}>Social Media</Link></li>
-              <li><Link href="#services" className={s.footerLink}>Sales Training</Link></li>
+              <li><Link href="/#services" className={s.footerLink}>Website Creation</Link></li>
+              <li><Link href="/#services" className={s.footerLink}>Ads Management</Link></li>
+              <li><Link href="/#services" className={s.footerLink}>Social Media</Link></li>
+              <li><Link href="/#services" className={s.footerLink}>Sales Training</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className={s.footerColTitle}>Connect</h4>
+            <h3 className={s.footerColTitle}>Connect</h3>
             <div className={s.footerSocials}>
               <a href="mailto:stratcrest.agency@gmail.com" className={s.footerSocialLink} aria-label="Email">
                 <Mail size={18} />

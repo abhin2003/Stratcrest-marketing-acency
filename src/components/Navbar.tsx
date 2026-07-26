@@ -19,11 +19,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "How We Work", href: "#how-we-work" },
-    { name: "Why Us", href: "#why-us" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#home" },
+    { name: "Services", href: "/#services" },
+    { name: "How We Work", href: "/#how-we-work" },
+    { name: "Why Us", href: "/#why-us" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -31,12 +31,11 @@ const Navbar = () => {
       <div className={styles.navContainer}>
         <Link href="/" className={styles.logoLink}>
           <Image
-            src="/assets/stratcrest_theme.png"
-            alt="Stratcrest Logo"
+            src="/assets/stratcrest_theme.webp"
+            alt="Stratcrest Marketing Agency Official Logo"
             width={160}
             height={40}
             style={{ width: "auto", height: "40px", objectFit: "contain" }}
-            priority
           />
         </Link>
 
@@ -51,7 +50,7 @@ const Navbar = () => {
         </ul>
 
         <div className={styles.actions}>
-          <Link href="#contact" className={styles.ctaLink}>
+          <Link href="/#contact" className={styles.ctaLink}>
             Get Started
           </Link>
           <button
@@ -80,7 +79,7 @@ const Navbar = () => {
             ))}
             <li style={{ marginTop: '1rem' }}>
               <Link 
-                href="#contact" 
+                href="/#contact" 
                 className={styles.ctaLink} 
                 style={{ display: 'inline-block', width: '100%' }}
                 onClick={() => setIsMobileMenuOpen(false)}

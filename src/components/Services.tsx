@@ -1,13 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Script from "next/script";
 import { PenTool, Target, Zap, LayoutDashboard, ArrowUpRight, Box } from "lucide-react";
 
 import s from "./Sections.module.css";
 
 const Services = () => {
+  const serviceSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Website Creation",
+      "description": "Custom-built, high-converting digital storefronts designed to scale your business.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Ads Management",
+      "description": "Performance-driven campaigns that scale revenue and lead generation.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Branding",
+      "description": "Strategic identity systems that build market authority and trust.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Social Media Management",
+      "description": "Engaging content that grows your community and brand awareness.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Video Production",
+      "description": "Cinematic storytelling that captures and keeps attention.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Sales Training",
+      "description": "Empowering your team to close more high-value deals.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Customer Service Training",
+      "description": "Elevating your client experience to build loyalty.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Product Development",
+      "description": "Building innovative and scalable solutions for your market needs.",
+      "provider": { "@type": "Organization", "name": "Stratcrest" }
+    }
+  ];
+
   return (
     <section id="services" className={`${s.sectionPadding} ${s.bgLavender}`}>
+      <Script id="services-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemas) }} />
       <div className="container">
         <div className="text-center mb-16">
           <h2 className={s.headlineH2}>Our Capabilities</h2>

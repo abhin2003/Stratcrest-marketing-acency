@@ -53,8 +53,8 @@ const About = () => {
             className={s.aboutImageWrap}
           >
             <Image
-              src="/assets/image_workspace.png"
-              alt="Modern Minimal Workspace"
+              src="/assets/image_workspace.webp"
+              alt="Modern minimalistic workspace illustrating professional strategy and consulting"
               fill
               className={s.aboutImage}
             />

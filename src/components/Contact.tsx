@@ -130,7 +130,7 @@ const Contact = () => {
           <div className={s.contactCategoryGrid}>
             {categories.map((cat) => (
               <div key={cat.title} className={s.contactCategory}>
-                <h4 className={s.contactCategoryTitle}>{cat.title}</h4>
+                <h3 className={s.contactCategoryTitle}>{cat.title}</h3>
                 <p className={s.contactCategoryDesc}>{cat.desc}</p>
               </div>
             ))}
@@ -167,7 +167,7 @@ const Contact = () => {
               >
                 <CheckCircle2 size={48} color="#7c3aed" />
                 <div>
-                  <h4 style={{ fontSize: "1.25rem", fontWeight: 600, color: "#111", marginBottom: "8px" }}>Message Sent!</h4>
+                  <h3 style={{ fontSize: "1.25rem", fontWeight: 600, color: "#111", marginBottom: "8px" }}>Message Sent!</h3>
                   <p style={{ color: "#666", fontSize: "0.95rem" }}>
                     We&apos;ve received your request and will get back to you within 24 hours.
                   </p>

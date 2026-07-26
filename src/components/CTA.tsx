@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import s from "./Sections.module.css";
 
 const CTA = () => {
@@ -24,12 +25,12 @@ const CTA = () => {
             <p className={s.ctaText}>
               Ready to transcend the ordinary? Join the ranks of industry leaders who have trusted Stratcrest to define their future.
             </p>
-            <a 
-              href="mailto:stratcrest.agency@gmail.com" 
+            <Link 
+              href="/#contact" 
               className="btn-purple"
             >
               Start the Conversation
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

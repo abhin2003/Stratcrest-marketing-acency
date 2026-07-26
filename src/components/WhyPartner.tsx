@@ -18,8 +18,8 @@ const WhyPartner = () => {
             className={s.overlapImage}
           >
             <Image
-              src="/assets/image_bento.png"
-              alt="Abstract UI Elements"
+              src="/assets/image_bento.webp"
+              alt="Bento box UI showcasing Stratcrest data-driven marketing features and analytics"
               fill
               className="object-cover"
             />
