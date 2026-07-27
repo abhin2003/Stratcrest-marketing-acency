@@ -1,14 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import s from "./Sections.module.css";
+import { DotMatrixBackground } from "@/components/ui/DotMatrixBackground";
+
+const HeroCanvas = dynamic(() => import("@/components/3d/HeroCanvas"), { ssr: false });
 
 const Hero = () => {
   return (
-    <section id="home" className={s.hero}>
-      <div className="container">
+    <section id="home" className={s.hero} style={{ position: 'relative' }}>
+      <DotMatrixBackground />
+      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <div className={s.heroGrid}>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -17,38 +21,32 @@ const Hero = () => {
           >
             <h1 className={s.heroTitle}>
               Illuminate Your <br />
-              <span className="text-gradient">Brand.</span> <br />
+              <span style={{ color: '#8B5CF6' }}>Brand.</span><br />
               Accelerate Your <br />
-              <span className="text-gradient">Growth.</span>
+              <span style={{ color: '#8B5CF6' }}>Growth.</span>
             </h1>
             <p className={s.heroDesc}>
               Stratcrest is a results-driven marketing and consulting agency helping businesses grow through branding, digital presence, and performance marketing.
             </p>
             <div className={s.heroBtns}>
-              <Link href="/services" className="btn-purple">
+              <Link href="/services" className={s.btnPurpleSolid}>
                 Explore Our Services
               </Link>
-              <Link href="/contact" className="btn-dark" style={{ background: '#FFFFFF', color: '#1E1B2E', border: '1px solid #E2D8F0' }}>
+              <Link href="/contact" className={s.btnOutline}>
                 Contact Us
               </Link>
             </div>
+
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className={s.heroImageWrap}
+            className={s.heroCanvasWrap}
+            id="hero-canvas-wrap"
           >
-            <div className={s.imageOverlayLight}></div>
-            <Image
-              src="/assets/hero_lux_v2.webp"
-              alt="Luxurious abstract soft art representing Stratcrest strategic branding and marketing growth"
-              fill
-              className="object-cover"
-              quality={80}
-              style={{ filter: 'brightness(1.15) contrast(0.9) saturate(0.85)' }}
-            />
+            <HeroCanvas />
           </motion.div>
         </div>
       </div>

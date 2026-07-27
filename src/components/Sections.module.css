@@ -251,7 +251,7 @@
   display: flex;
   align-items: center;
   padding: 10rem 0 5rem;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg); /* Light purple from theme */
   position: relative;
 }
 
@@ -271,23 +271,20 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 8vw, 6rem); /* Balanced for desktop/mobile */
-  color: var(--color-text-main);
-  margin-bottom: 2rem;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-}
-@media (max-width: 768px) {
-  .heroTitle br {
-    display: none;
-  }
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: 900;
+  color: #000000;
+  margin-bottom: 1.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
 .heroDesc {
   font-size: 1.125rem;
-  color: var(--color-text-muted);
-  margin-bottom: 2.5rem;
+  color: #64748B;
+  margin-bottom: 3rem;
   max-width: 500px;
+  line-height: 1.6;
 }
 @media (max-width: 768px) {
   .heroDesc {
@@ -299,18 +296,76 @@
 
 .heroBtns {
   display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
 }
 @media (max-width: 768px) {
   .heroBtns {
     justify-content: center;
-    gap: 1rem;
   }
   .heroBtns > * {
-    width: 100%;
+    width: auto;
     text-align: center;
   }
+}
+
+.btnPurpleSolid {
+  background: #9333EA; /* vibrant purple */
+  color: white;
+  padding: 0.875rem 2.5rem;
+  border-radius: 9999px; /* Pill */
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-block;
+}
+.btnPurpleSolid:hover {
+  background: #7E22CE;
+}
+
+.btnOutline {
+  background: #FFFFFF;
+  color: #000000;
+  padding: 0.875rem 2.5rem;
+  border-radius: 9999px; /* Pill */
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #CBD5E1;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+.btnOutline:hover {
+  background: #F8FAFC;
+}
+
+.web3Metrics {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 1.5rem;
+}
+@media (max-width: 768px) {
+  .web3Metrics {
+    justify-content: center;
+    text-align: left;
+  }
+}
+.web3Metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.web3MetricLabel {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  letter-spacing: 0.02em;
+}
+.web3MetricValue {
+  font-size: 1.25rem;
+  color: #475569;
+  font-weight: 400;
 }
 
 .heroImageWrap {
@@ -324,9 +379,20 @@
   aspect-ratio: 4 / 3;
   min-height: 420px;
 }
+
+.heroCanvasWrap {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  aspect-ratio: 4 / 3;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Mobile-only: constrain width and reduce height */
 @media (max-width: 1023px) {
-  .heroImageWrap {
+  .heroImageWrap, .heroCanvasWrap {
     max-width: 500px;
     margin: 0 auto;
     min-height: 280px;

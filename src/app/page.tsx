@@ -1,4 +1,3 @@
-import Script from "next/script";
 import dynamic from "next/dynamic";
 import ScrollHandler from "@/components/ScrollHandler";
 import Navbar from "@/components/Navbar";
@@ -62,8 +61,8 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <ScrollHandler />
-      <Script id="org-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
-      <Script id="localbiz-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <Navbar />
       <Hero />
       <About />

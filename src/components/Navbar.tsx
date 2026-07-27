@@ -79,7 +79,7 @@ const Navbar = () => {
             ))}
             <li style={{ marginTop: '1rem' }}>
               <Link 
-                href="/contact" 
+                href="/contact"   
                 className={styles.ctaLink} 
                 style={{ display: 'inline-block', width: '100%' }}
                 onClick={() => setIsMobileMenuOpen(false)}

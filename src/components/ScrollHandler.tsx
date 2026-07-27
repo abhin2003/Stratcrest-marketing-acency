@@ -1,13 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ScrollHandler() {
   const pathname = usePathname();
+  const lastScrolledPath = useRef("");
 
   useEffect(() => {
-    // Small delay to ensure dynamic components have mounted
+    // If we've already scrolled to this exact path during this session,
+    // don't scroll again! This prevents annoying jumps on Next.js Hot Reload.
+    if (lastScrolledPath.current === pathname) return;
+    lastScrolledPath.current = pathname;
+
     const timeout = setTimeout(() => {
       let sectionId = "";
       if (pathname === "/services") sectionId = "services";
@@ -25,7 +30,7 @@ export default function ScrollHandler() {
           section.scrollIntoView({ behavior: "smooth" });
         }
       }
-    }, 300); // 300ms delay for next/dynamic components to render
+    }, 300);
 
     return () => clearTimeout(timeout);
   }, [pathname]);
